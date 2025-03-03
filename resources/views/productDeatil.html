@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Watch Pro - ShopEase</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.3/cdn.min.js" defer></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation (Same as other pages) -->
+    <nav class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <span class="text-xl font-bold text-indigo-600">ShopEase</span>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="#" class="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Home
+                        </a>
+                        <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Shop
+                        </a>
+                        <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Categories
+                        </a>
+                        <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            About
+                        </a>
+                        <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Contact
+                        </a>
+                    </div>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:items-center">
+                    <button class="p-1 rounded-full text-gray-400 hover:text-gray-500 relative">
+                        <span class="sr-only">View notifications</span>
+                        <i class="fas fa-bell"></i>
+                    </button>
+                    <button class="ml-3 p-1 rounded-full text-gray-400 hover:text-gray-500 relative">
+                        <span class="sr-only">View cart</span>
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="absolute top-0 right-0 block h-4 w-4 rounded-full bg-red-500 text-white text-xs">3</span>
+                    </button>
+                    <div class="ml-3 relative">
+                        <div>
+                            <button type="button" class="bg-white flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" id="user-menu-button">
+                                <span class="sr-only">Open user menu</span>
+                                <img class="h-8 w-8 rounded-full" src="/api/placeholder/40/40" alt="User profile">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumbs -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <nav class="flex" aria-label="Breadcrumb">
+            <ol class="flex items-center space-x-4">
+                <li>
+                    <div>
+                        <a href="#" class="text-gray-400 hover:text-gray-500">
+                            <i class="fas fa-home"></i>
+                            <span class="sr-only">Home</span>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="flex items-center">
+                        <i class="fas fa-chevron-right text-gray-400 text-sm"></i>
+                        <a href="#" class="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700">Electronics</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="flex items-center">
+                        <i class="fas fa-chevron-right text-gray-400 text-sm"></i>
+                        <a href="#" class="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700">Wearables</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="flex items-center">
+                        <i class="fas fa-chevron-right text-gray-400 text-sm"></i>
+                        <span class="ml-4 text-sm font-medium text-gray-500" aria-current="page">Smart Watch Pro</span>
+                    </div>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Product Detail -->
+    <div class="bg-white">
+        <div class="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-x-8 lg:items-start">
+                <!-- Image Gallery -->
+                <div class="flex flex-col" x-data="{ activeImage: 0 }">
+                    <!-- Main Image -->
+                    <div class="flex-1 w-full rounded-lg overflow-hidden">
+                        <img src="/api/placeholder/600/600" class="w-full h-full object-center object-cover" alt="Smart Watch Pro - Main View">
+                    </div>
+                    
+                    <!-- Thumbnail Images -->
+                    <div class="mt-4 grid grid-cols-4 gap-4">
+                        <button class="border-2 border-indigo-600 rounded-md overflow-hidden">
+                            <img src="/api/placeholder/100/100" class="w-full h-full object-center object-cover" alt="Smart Watch Pro - Angle 1">
+                        </button>
+                        <button class="border-2 border-gray-200 rounded-md hover:border-indigo-600 overflow-hidden">
+                            <img src="/api/placeholder/100/100" class="w-full h-full object-center object-cover" alt="Smart Watch Pro - Angle 2">
+                        </button>
+                        <button class="border-2 border-gray-200 rounded-md hover:border-indigo-600 overflow-hidden">
+                            <img src="/api/placeholder/100/100" class="w-full h-full object-center object-cover" alt="Smart Watch Pro - Angle 3">
+                        </button>
+                        <button class="border-2 border-gray-200 rounded-md hover:border-indigo-600 overflow-hidden">
+                            <img src="/api/placeholder/100/100" class="w-full h-full object-center object-cover" alt="Smart Watch Pro - Angle 4">
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product Info -->
+                <div class="mt-10 px-4 sm:px-0 sm:mt-16 lg:mt-0">
+                    <h1 class="text-3xl font-extrabold tracking-tight text-gray-900">Smart Watch Pro</h1>
+                    
+                    <!-- Reviews -->
+                    <div class="mt-3">
+                        <div class="flex items-center">
+                            <div class="flex items-center">
+                                <span class="text-yellow-400 flex">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </span>
+                            </div>
+                            <p class="ml-2 text-sm text-gray-500">4.8 (128 reviews)</p>
+                        </div>
+                    </div>
+
+                    <!-- Price -->
+                    <div class="mt-4 flex items-center">
+                        <p class="text-3xl font-bold text-gray-900">$249.99</p>
+                        <p class="ml-4 text-lg line-through text-gray-500">$299.99</p>
+                        <span class="ml-2 px-2 py-1 bg-red-100 text-red-800 text-xs font-semibold rounded">Save 17%</span>
+                    </div>
+
+                    <!-- Availability -->
+                    <div class="mt-4">
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                            <span class="h-2 w-2 rounded-full bg-green-500 mr-1.5"></span>
+                            In Stock
+                        </span>
+                        <span class="ml-2 text-sm text-gray-500">Usually ships within 24 hours</span>
+                    </div>
+
+                    <!-- Short Description -->
+                    <div class="mt-4">
+                        <p class="text-base text-gray-500">
+                            The Smart Watch Pro combines elegant design with cutting-edge technology. Track your fitness, receive notifications, monitor your health, and more with this premium smartwatch.
+                        </p>
+                    </div>
+
+                    <!-- Color Selection -->
+                    <div class="mt-6">
+                        <h3 class="text-sm text-gray-900 font-medium">Color</h3>
+                        <div class="mt-2 flex space-x-3">
+                            <button class="w-8 h-8 bg-black rounded-full border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"></button>
+                            <button class="w-8 h-8 bg-gray-200 rounded-full border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"></button>
+                            <button class="w-8 h-8 bg-indigo-500 rounded-full border-2 border-indigo-500 ring-2 ring-indigo-200 focus:outline-none"></button>
+                            <button class="w-8 h-8 bg-red-500 rounded-full border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"></button>
+                        </div>
+                    </div>
+
+                    <!-- Quantity -->
+                    <div class="mt-6">
+                        <div class="flex items-center">
+                            <h3 class="text-sm text-gray-900 font-medium mr-3">Quantity</h3>
+                            <div class="flex items-center border border-gray-300 rounded">
+                                <button class="px-3 py-1 text-gray-500 hover:bg-gray-100">-</button>
+                                <input type="text" value="1" class="w-12 text-center border-0 focus:ring-0 focus:outline-none">
+                                <button class="px-3 py-1 text-gray-500 hover:bg-gray-100">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add to Cart Button -->
+                    <div class="mt-8 flex sm:flex-col1">
+                        <button type="button" class="w-full bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            <i class="fas fa-shopping-cart mr-2"></i>
+                            Add to Cart
+                        </button>
+                        <button type="button" class="ml-4 py-3 px-3 rounded-md flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-gray-500">
+                            <i class="fas fa-heart"></i>
+                            <span class="sr-only">Add to favorites</span>
+                        </button>
+                    </div>
+
+                    <!-- Product Specifications -->
+                    <div class="mt-8 border-t border-gray-200 pt-8">
+                        <h3 class="text-lg font-medium text-gray-900">Specifications</h3>
+                        <div class="mt-4 grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6">
+                            <div class="flex items-center">
+                                <i class="fas fa-tachometer-alt w-5 h-5 text-gray-400"></i>
+                                <span class="ml-2 text-sm text-gray-500">Processor: Dual-core 1.2 GHz</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-battery-full w-5 h-5 text-gray-400"></i>
+                                <span class="ml-2 text-sm text-gray-500">Battery Life: Up to 5 days</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-memory w-5 h-5 text-gray-400"></i>
+                                <span class="ml-2 text-sm text-gray-500">Memory: 1GB RAM, 8GB Storage</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-water w-5 h-5 text-gray-400"></i>
+                                <span class="ml-2 text-sm text-gray-500">Water Resistance: 5 ATM</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-mobile-alt w-5 h-5 text-gray-400"></i>
+                                <span class="ml-2 text-sm text-gray-500">Display: 1.3" AMOLED, 450x450</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-bluetooth w-5 h-5 text-gray-400"></i>
+                                <span class="ml-2 text-sm text-gray-500">Connectivity: Bluetooth 5.0, WiFi</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Delivery Options -->
+                    <div class="mt-8 border-t border-gray-200 pt-8">
+                        <h3 class="text-lg font-medium text-gray-900">Delivery & Returns</h3>
+                        <div class="mt-4 space-y-4">
+                            <div class="flex items-start">
+                                <i class="fas fa-truck mt-1 w-5 h-5 text-green-500"></i>
+                                <div class="ml-3">
+                                    <p class="text-sm text-gray-700">Free standard shipping on orders over $50</p>
+                                    <p class="mt-1 text-sm text-gray-500">Estimated delivery: Mar 6 - Mar 10</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-undo mt-1 w-5 h-5 text-green-500"></i>
+                                <div class="ml-3">
+                                    <p class="text-sm text-gray-700">Free returns within 30 days</p>
+                                    <p class="mt-1 text-sm text-gray-500">Not the right fit? No problem.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Description -->
+            <div class="mt-16 lg:mt-20 lg:col-span-2">
+                <div x-data="{ activeTab: 'description' }">
+                    <!-- Tabs -->
+                    <div class="border-b border-gray-200">
+                        <nav class="-mb-px flex space-x-8" aria-label="Tabs">
+                            <button
+                                @click="activeTab = 'description'"
+                                :class="activeTab === 'description' ? 'border-indigo-500 text-indigo-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'"
+                                class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                                Description
+                            </button>
+                            <button
+                                @click="activeTab = 'features'"
+                                :class="activeTab === 'features' ? 'border-indigo-500 text-indigo-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'"
+                                class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                                Features
+                            </button>
+                            <button
+                                @click="activeTab = 'reviews'"
+                                :class="activeTab === 'reviews' ? 'border-indigo-500 text-indigo-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'"
+                                class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                                Reviews (128)
+                            </button>
+                        </nav>
+                    </div>
+
+                    <!-- Tab Content -->
+                    <div class="mt-6">
+                        <!-- Description Tab -->
+                        <div x-show="activeTab === 'description'" class="prose prose-indigo max-w-none">
+                            <p>The Smart Watch Pro is the ultimate companion for your active lifestyle. This premium smartwatch combines elegant design with cutting-edge technology to help you stay connected, monitor your health, and achieve your fitness goals.</p>
+                            <p class="mt-4">With its vibrant 1.3" AMOLED display, you'll enjoy crystal-clear visuals even in bright sunlight. The durable Corning Gorilla Glass protection keeps your watch safe from scratches and impacts during your daily activities.</p>
+                            <p class="mt-4">Advanced health monitoring features track your heart rate, sleep patterns, stress levels, and blood oxygen saturation. The built-in GPS accurately records your outdoor activities, while over 100 sport modes provide detailed insights into your workouts.</p>
+                            <p class="mt-4">Stay connected with notifications for calls, messages, and apps. Control your music, take voice notes, and even make payments with the NFC chip. With up to 5 days of battery life, you won't need to worry about frequent charging.</p>
+                        </div>
+
+                        <!-- Features Tab -->
+                        <div x-show="activeTab === 'features'" class="hidden prose prose-indigo max-w-none">
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>1.3" AMOLED touchscreen display (450x450)</li>
+                                <li>Advanced health monitoring (heart rate, SpO2, sleep tracking)</li>
+                                <li>Built-in GPS and GLONASS</li>
+                                <li>100+ sports modes with automatic detection</li>
+                                <li>5 ATM water resistance (swim-proof)</li>
+                                <li>Bluetooth 5.0 and WiFi connectivity</li>
+                                <li>NFC for contactless payments</li>
+                                <li>Dual-core processor with 1GB RAM</li>
+                                <li>8GB onboard storage for music</li>
+                                <li>400mAh battery with up to 5 days battery life</li>
+                                <li>Compatible with iOS 12.0+ and Android 8.0+</li>
+                                <li>Customizable watch faces and straps</li>
+                            </ul>
+                        </div>
+
+                        <!-- Reviews Tab -->
+                        <div x-show="activeTab === 'reviews'" class="hidden">
+                            <!-- Review Summary -->
+                            <div class="flex items-center">
+                                <div class="flex items-center">
+                                    <span class="text-yellow-400 flex">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </span>
+                                </div>
+                                <p class="ml-2 text-sm text-gray-900">4.8 out of 5 stars (128 reviews)</p>
+                            </div>
+
+                            <!-- Rating Distribution -->
+                            <div class="mt-6">
+                                <h3 class="sr-only">Review data</h3>
+                                <div class="space-y-3">
+                                    <div class="flex items-center text-sm">
+                                        <div class="flex-1 flex items-center">
+                                            <span>5 star</span>
+                                            <div class="ml-3 relative flex-1">
+                                                <div class="h-3 bg-gray-100 border border-gray-200 rounded-full"></div>
+                                                <div style="width: 75%" class="absolute inset-y-0 bg-yellow-400 border border-yellow-400 rounded-full"></div>
+                                            </div>
+                                        </div>
+                                        <span class="ml-3 w-10 text-right text-sm text-gray-900">75%</span>
+                                    </div>
+
+                                    <div class="flex items-center text-sm">
+                                        <div class="flex-1 flex items-center">
+                                            <span>4 star</span>
+                                            <div class="ml-3 relative flex-1">
+                                                <div class="h-3 bg-gray-100 border border-gray-200 rounded-full"></div>
+                                                <div style="width: 17%" class="absolute inset-y-0 bg-yellow-400 border border-yellow-400 rounded-full"></div>
+                                            </div>
+                                        </div>
+                                        <span class="ml-3 w-10 text-right text-sm text-gray-900">17%</span>
+                                    </div>
+
+                                    <div class="flex items-center text-sm">
+                                        <div class="flex-1 flex items-center">
+                                            <span>3 star</span>
+                                            <div class="ml-3 relative flex-1">
+                                                <div class="h-3 bg-gray-100 border border-gray-200 rounded-full"></div>
+                                                <div style="width: 5%" class="absolute inset-y-0 bg-yellow-400 border border-yellow-400 rounded-full"></div>
+                                            </div>
+                                        </div>
+                                        <span class="ml-3 w-10 text-right text-sm text-gray-900">5%</span>
+                                    </div>
+
+                                    <div class="flex items-center text-sm">
+                                        <div class="flex-1 flex items-center">
+                                            <span>2 star</span>
+                                            <div class="ml-3 relative flex-1">
+                                                <div class="h-3 bg-gray-100 border border-gray-200 rounded-full"></div>
+                                                <div style="width: 2%" class="absolute inset-y-0 bg-yellow-400 border border-yellow-400 rounded-full"></div>
+                                            </div>
+                                        </div>
+                                        <span class="ml-3 w-10 text-right text-sm text-gray-900">2%</span>
+                                    </div>
+
+                                    <div class="flex items-center text-sm">
+                                        <div class="flex-1 flex items-center">
+                                            <span>1 star</span>
+                                            <div class="ml-3 relative flex-1">
+                                                <div class="h-3 bg-gray-100 border border-gray-200 rounded-full"></div>
+                                                <div style="width: 1%" class="absolute inset-y-0 bg-yellow-400 border border-yellow-400 rounded-full"></div>
+                                            </div>
+                                        </div>
+                                        <span class="ml-3 w-10 text-right text-sm text-gray-900">1%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Sample Reviews -->
+                            <div class="mt-10">
+                                <h3 class="text-lg font-medium text-gray-900">Recent reviews</h3>
+
+                                <div class="mt-6 border-t border-gray-200 divide-y divide-gray-200">
+                                    <!-- Review 1 -->
+                                    <div class="py-8">
+                                        <div class="flex items-center">
+                                            <img src="/api/placeholder/40/40" alt="Customer" class="h-8 w-8 rounded-full">
+                                            <div class="ml-4">
+                                                <h4 class="text-sm font-bold text-gray-900">Michael Thompson</h4>
+                                                <div class="mt-1 flex items-center">
+                                                    <span class="text-yellow-400 flex">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                    </span>
+                                                </div>
+                                                <p class="mt-1 text-sm text-gray-500">Reviewed on February 25, 2025</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="mt-4 space-y-6 text-base italic text-gray-600">
+                                            <p>Absolutely love this smartwatch! The battery life is incredible - I only need to charge it once a week with my usage. The health tracking features are accurate, and the display is bright and responsive. Highly recommend!</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Review 2 -->
+                                    <div class="py-8">
+                                        <div class="flex items-center">
+                                            <img src="/api/placeholder/40/40" alt="Customer" class="h-8 w-8 rounded-full">
+                                            <div class="ml-4">
+                                                <h4 class="text-sm font-bold text-gray-900">Sarah Johnson</h4>
+                                                <div class="mt-1 flex items-center">
+                                                    <span class="text-yellow-400 flex">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                    </span>
+                                                </div>
+                                                <p class="mt-1 text-sm text-gray-500">Reviewed on February 18, 2025</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="mt-4 space-y-6 text-base italic text-gray-600">
+                                            <p>Great smartwatch with excellent build quality. The sleep tracking is surprisingly accurate, and I love the stress monitoring feature. Only giving 4 stars because the app could use some improvements in terms of user interface. Otherwise, it's a fantastic product!</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Load More Button -->
+                                    <div class="mt-8 flex justify-center">
+                                        <button type="button" class="text-sm font-medium text-indigo-600 hover:text-indigo-500">
+                                            Load more reviews
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Related Products -->
+            <div class="mt-16 border-t border-gray-200 pt-16">
+                <h2 class="text-2xl font-extrabold tracking-tight text-gray-900">Customers also purchased</h2>
+                <div class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4">
+                    <!-- Product 1 -->
+                    <div class="group relative">
+                        <div class="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75">
+                            <img src="/api/placeholder/300/300" alt="Fitness Tracker" class="w-full h-full object-center object-cover">
+                        </div>
+                        <div class="mt-4 flex justify-between">
+                            <div>
+                                <h3 class="text-sm text-gray-700">
+                                    <a href="#">
+                                        <span aria-hidden="true" class="absolute inset-0"></span>
+                                        Fitness Tracker Ultra
+                                    </a>
+                                </h3>
+                                <p class="mt-1 text-sm text-gray-500">Black</p>
+                            </div>
+                            <p class="text-sm font-medium text-gray
